@@ -4,9 +4,9 @@ from flask import Flask
 app = Flask(__name__)
 
 
-@app.route('/')
-def index():
-    return '<h1>Hello World</h1>'
+# 注册蓝图
+from routes.main import main as main_bp
+app.register_blueprint(main_bp)
 
 
 if __name__ == '__main__':
