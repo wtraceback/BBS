@@ -6,4 +6,9 @@
 
 {% block content %}
     <h1>Hello World</h1>
+
+    <div>
+        <a href="{{ url_for('auth.login') }}">登录</a>
+        <a href="{{ url_for('auth.register') }}">注册</a>
+    </div>
 {% endblock %}

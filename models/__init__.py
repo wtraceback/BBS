@@ -34,8 +34,20 @@ class Model(object):
         :return: 对应类的文件存储路径
         """
         classname = cls.__name__
-        path = 'db/{}.txt'.format(classname)
+        path = 'db/{}.json'.format(classname)
         return path
+
+    @classmethod
+    def new(cls, form, **kwargs):
+        m = cls(form)
+
+        # 额外设置 m 的属性
+        for k, v in kwargs.items():
+            setattr(m, k, v)
+
+        m.save()
+
+        return m
 
     @classmethod
     def all(cls):
