@@ -1,0 +1,17 @@
+{% extends "bbs_base.html" %}
+
+{% block title %}
+    {{ topic.id }} detail
+{% endblock %}
+
+{% block content %}
+    <h1>{{ topic.title }}</h1>
+
+    <div>
+        <p>
+            {{ topic.content }}
+        </p>
+    </div>
+
+    <a href="{{ url_for('topic.index') }}">返回话题页</a>
+{% endblock %}

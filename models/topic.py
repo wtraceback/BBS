@@ -14,3 +14,8 @@ class Topic(Model):
         self.ct = int(time.time())
         self.ut = self.ct
         self.user_id = form.get('user_id', '')
+
+    @classmethod
+    def get(cls, id):
+        t = cls.find_by(id=id)
+        return t
