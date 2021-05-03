@@ -1,0 +1,23 @@
+{% extends "bbs_base.html" %}
+
+{% block title %}
+    Add Topic
+{% endblock %}
+
+{% block content %}
+    <h1>添加新的话题</h1>
+
+    <form class="form-horizontal" method="post" action="{{ url_for('topic.add') }}">
+        <div class="control-group">
+            <textarea autofocus id="title" name="title" rows="1" placeholder="标题"></textarea>
+        </div>
+
+        <div class="control-group">
+            <textarea name="content" id="" cols="30" rows="10" placeholder="内容"></textarea>
+        </div>
+
+        <div class="form-actions">
+            <input type="submit" class="span-primary" value="提交">
+        </div>
+    </form>
+{% endblock %}
