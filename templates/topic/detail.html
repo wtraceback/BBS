@@ -14,4 +14,32 @@
     </div>
 
     <a href="{{ url_for('topic.index') }}">返回话题页</a>
+
+    <div class="reply-list">
+        <h2>评论显示区</h2>
+        {% for r in topic.replies() %}
+            <div class="reply-item">
+                <p>
+                    {{ r.user().username }} @ {{ r.content }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div>
+        <form class="form-horizontal" method="post" action="{{ url_for('reply.add') }}">
+            <input type="hidden" name="topic_id" value="{{ topic.id }}">
+
+            <div class="control-group">
+                <label class="control-label">评论</label>
+                <div class="controls">
+                    <textarea name="content" cols="30" rows="10"></textarea>
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <input type="submit" class="span-primary" value="添加评论">
+            </div>
+        </form>
+    </div>
 {% endblock %}

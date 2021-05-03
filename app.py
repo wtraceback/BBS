@@ -14,6 +14,8 @@ from routes.auth import auth as auth_bp
 app.register_blueprint(auth_bp)
 from routes.topic import topic as topic_bp
 app.register_blueprint(topic_bp, url_prefix='/topic')
+from routes.reply import reply as reply_bp
+app.register_blueprint(reply_bp, url_prefix='/reply')
 
 
 if __name__ == '__main__':

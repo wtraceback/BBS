@@ -15,7 +15,7 @@ class Topic(Model):
         self.ut = self.ct
         self.user_id = form.get('user_id', '')
 
-    @classmethod
-    def get(cls, id):
-        t = cls.find_by(id=id)
-        return t
+    def replies(self):
+        from models.reply import Reply
+        rs = Reply.find_all(topic_id=self.id)
+        return rs

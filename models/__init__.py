@@ -50,13 +50,24 @@ class Model(object):
         return m
 
     @classmethod
+    def _new_from_dict(cls, d):
+        """
+        从文件中读取的数据，使用 setattr 来写入实例中
+        """
+        m = cls({})
+        for k, v in d.items():
+            setattr(m, k, v)
+
+        return m
+
+    @classmethod
     def all(cls):
         """
         :return: 返回一个类的所有存储的实例
         """
         path = cls.db_path()
         models = load(path)
-        ms = [cls(m) for m in models]
+        ms = [cls._new_from_dict(m) for m in models]
 
         return ms
 
@@ -96,6 +107,10 @@ class Model(object):
                 return m
 
         return None
+
+    @classmethod
+    def get(cls, id):
+        return cls.find_by(id=id)
 
     @classmethod
     def delete(cls, id):
