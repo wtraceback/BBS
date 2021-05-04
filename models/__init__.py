@@ -1,4 +1,5 @@
 import json
+import os
 
 
 def save(data, path):
@@ -34,7 +35,15 @@ class Model(object):
         :return: 对应类的文件存储路径
         """
         classname = cls.__name__
-        path = 'db/{}.json'.format(classname)
+        db = 'db'
+        path = '{}/{}.json'.format(db, classname)
+
+        # 判断目录或文件是否存在，如果不存在，则创建目录和 json 文件
+        if not os.path.exists(db):
+            os.mkdir(db)
+        if not os.path.exists(path):
+            save([], path)
+
         return path
 
     @classmethod
