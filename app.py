@@ -16,6 +16,8 @@ from routes.topic import topic as topic_bp
 app.register_blueprint(topic_bp, url_prefix='/topic')
 from routes.reply import reply as reply_bp
 app.register_blueprint(reply_bp, url_prefix='/reply')
+from routes.board import board as board_bp
+app.register_blueprint(board_bp, url_prefix='/board')
 
 
 if __name__ == '__main__':

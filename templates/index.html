@@ -8,6 +8,8 @@
     <h1>Hello World</h1>
 
     <div>
+        <a href="{{ url_for('topic.index') }}">topic</a>
+        <a href="{{ url_for('board.add') }}">board</a>
         <a href="{{ url_for('auth.login') }}">登录</a>
         <a href="{{ url_for('auth.register') }}">注册</a>
     </div>

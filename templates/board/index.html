@@ -1,0 +1,20 @@
+{% extends "bbs_base.html" %}
+
+{% block title %}
+    Add Board
+{% endblock %}
+
+{% block content %}
+    <h1>添加新的板块</h1>
+
+    <form class="form-horizontal" method="post" action="{{ url_for('board.add') }}">
+        <div class="control-group">
+            <input type="text" name="name">
+        </div>
+
+        <div class="form-actions">
+            <input type="submit" class="span-primary" value="提交">
+        </div>
+
+    </form>
+{% endblock %}
