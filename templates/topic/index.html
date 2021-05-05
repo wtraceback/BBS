@@ -7,13 +7,24 @@
 {% block content %}
     <h1>话题展示页</h1>
 
-    <div class="topic-list" style="border: 1px solid #ccc">
-        <h2>话题栏</h2>
-        {% for t in topics %}
-            <div class="topic-item">
-                <a href="{{ url_for('topic.detail', id=t.id) }}">{{ t.title }}</a>
-            </div>
-        {% endfor %}
+    <div class="panel">
+        <div class="header">
+            <a href="{{ url_for('topic.index') }}" class="topic-tab">全部</a>
+
+            {% for b in boards %}
+                <a href="{{ url_for('topic.index', board_id=b.id) }}" class="topic-tab">{{ b.name }}</a>
+            {% endfor %}
+            <hr>
+        </div>
+
+        <div class="topic-list" style="border: 1px solid #ccc">
+            <h2>话题栏</h2>
+            {% for t in topics %}
+                <div class="topic-item">
+                    <a href="{{ url_for('topic.detail', id=t.id) }}">{{ t.title }}</a>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 
     <a href="{{ url_for('topic.add') }}">添加新话题</a>

@@ -7,6 +7,7 @@ from flask import (
 )
 from routes import current_user
 from models.topic import Topic
+from models.board import Board
 
 
 topic = Blueprint('topic', __name__)
@@ -14,8 +15,15 @@ topic = Blueprint('topic', __name__)
 
 @topic.route('/')
 def index():
-    ts = Topic.all()
-    return render_template('topic/index.html', topics=ts)
+    board_id = int(request.args.get('board_id', -1))
+    if board_id == -1:
+        ts = Topic.all()
+    else:
+        ts = Topic.find_all(board_id=board_id)
+
+    bs = Board.all()
+
+    return render_template('topic/index.html', topics=ts, boards=bs)
 
 
 @topic.route('/add', methods=['GET', 'POST'])
@@ -26,7 +34,8 @@ def add():
         t = Topic.new(form, user_id=u.id)
         return redirect(url_for('topic.detail', id=t.id))
 
-    return render_template('topic/add.html')
+    bs = Board.all()
+    return render_template('topic/add.html', boards=bs)
 
 
 @topic.route('/<int:id>')

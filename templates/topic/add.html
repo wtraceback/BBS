@@ -13,6 +13,16 @@
         </div>
 
         <div class="control-group">
+            <span class="tab-selector">选择版块：</span>
+            <select name="board_id" id="board" required>
+                <option value="">请选择</option>
+                {% for b in boards %}
+                    <option value="{{ b.id }}">{{ b.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="control-group">
             <textarea name="content" id="" cols="30" rows="10" placeholder="内容"></textarea>
         </div>
 
