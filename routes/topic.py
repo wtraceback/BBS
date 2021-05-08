@@ -22,8 +22,9 @@ def index():
         ts = Topic.find_all(board_id=board_id)
 
     bs = Board.all()
+    user = current_user()
 
-    return render_template('topic/index.html', topics=ts, boards=bs)
+    return render_template('topic/index.html', topics=ts, boards=bs, user=user)
 
 
 @topic.route('/add', methods=['GET', 'POST'])

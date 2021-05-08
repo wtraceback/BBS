@@ -4,32 +4,32 @@
 Topic
 {% endblock %}
 
-{% block content %}
-    <div class="container my-3">
-        <ul class="nav nav-pills">
+{% block page_content %}
+    <ul class="nav nav-pills">
+        <li class="nav-item">
+            <a class="nav-link {% if request.args.get('board_id', '') == '' %}active{% endif %}" href="{{ url_for('topic.index') }}">全部</a>
+        </li>
+        {% for b in boards %}
             <li class="nav-item">
-                <a class="nav-link {% if request.args.get('board_id', '') == '' %}active{% endif %}" href="{{ url_for('topic.index') }}">全部</a>
+                <a class="nav-link {% if request.args.get('board_id', '') == b.str_id() %}active{% endif %}" href="{{ url_for('topic.index', board_id=b.id) }}">{{ b.name }}</a>
             </li>
-            {% for b in boards %}
-                <li class="nav-item">
-                    <a class="nav-link {% if request.args.get('board_id', '') == b.str_id() %}active{% endif %}" href="{{ url_for('topic.index', board_id=b.id) }}">{{ b.name }}</a>
-                </li>
+        {% endfor %}
+    </ul>
+
+    <hr class="my-3">
+
+    <div class="panel">
+        <ui class="list-group">
+            {% for t in topics %}
+            <li class="list-group-item">
+                <a href="{{ url_for('topic.detail', id=t.id) }}">{{ t.title }}</a>
+            </li>
             {% endfor %}
-        </ul>
-
-        <hr class="my-3">
-
-        <div class="panel">
-            <ui class="list-group" style="border: 1px solid #ccc">
-                {% for t in topics %}
-                <li class="list-group-item">
-                    <a href="{{ url_for('topic.detail', id=t.id) }}">{{ t.title }}</a>
-                </li>
-                {% endfor %}
-            </ui>
-        </div>
-
-        <a href="{{ url_for('topic.add') }}">添加新话题</a>
-        <a href="{{ url_for('board.add') }}">添加新版块</a>
+        </ui>
     </div>
+
+    <a href="{{ url_for('topic.add') }}">添加新话题</a>
+    {% if user.role == 1 %}
+        <a href="{{ url_for('board.add') }}">添加新版块</a>
+    {% endif %}
 {% endblock %}
