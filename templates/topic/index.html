@@ -5,27 +5,31 @@ Topic
 {% endblock %}
 
 {% block content %}
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link active" href="{{ url_for('topic.index') }}">全部</a>
-        </li>
-        {% for b in boards %}
+    <div class="container my-3">
+        <ul class="nav nav-pills">
             <li class="nav-item">
-                <a class="nav-link" href="{{ url_for('topic.index', board_id=b.id) }}">{{ b.name }}</a>
+                <a class="nav-link {% if request.args.get('board_id', '') == '' %}active{% endif %}" href="{{ url_for('topic.index') }}">全部</a>
             </li>
-        {% endfor %}
-    </ul>
-
-    <div class="panel">
-        <div class="topic-list" style="border: 1px solid #ccc">
-            {% for t in topics %}
-            <div class="topic-item">
-                <a href="{{ url_for('topic.detail', id=t.id) }}">{{ t.title }}</a>
-            </div>
+            {% for b in boards %}
+                <li class="nav-item">
+                    <a class="nav-link {% if request.args.get('board_id', '') == b.str_id() %}active{% endif %}" href="{{ url_for('topic.index', board_id=b.id) }}">{{ b.name }}</a>
+                </li>
             {% endfor %}
-        </div>
-    </div>
+        </ul>
 
-    <a href="{{ url_for('topic.add') }}">添加新话题</a>
-    <a href="{{ url_for('board.add') }}">添加新版块</a>
+        <hr class="my-3">
+
+        <div class="panel">
+            <ui class="list-group" style="border: 1px solid #ccc">
+                {% for t in topics %}
+                <li class="list-group-item">
+                    <a href="{{ url_for('topic.detail', id=t.id) }}">{{ t.title }}</a>
+                </li>
+                {% endfor %}
+            </ui>
+        </div>
+
+        <a href="{{ url_for('topic.add') }}">添加新话题</a>
+        <a href="{{ url_for('board.add') }}">添加新版块</a>
+    </div>
 {% endblock %}

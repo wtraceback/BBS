@@ -12,3 +12,6 @@ class Board(Model):
         self.name = form.get('name', '')
         self.ct = int(time.time())
         self.ut = self.ct
+
+    def str_id(self):
+        return str(self.id)
