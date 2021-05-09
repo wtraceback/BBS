@@ -23,11 +23,12 @@ def add():
     if request.method == 'POST':
         form = request.form
         b = Board.new(form)
-        return redirect(url_for('topic.index'))
+        return redirect(url_for('board.manage'))
 
     return render_template('board/add.html')
 
 
-@board.route('/delete/<int:id>')
+@board.route('/delete/<int:id>', methods=['POST'])
 def delete(id):
-    pass
+    b = Board.delete(id)
+    return redirect(url_for('board.manage'))
