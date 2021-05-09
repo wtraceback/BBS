@@ -30,6 +30,6 @@ Topic
 
     <a href="{{ url_for('topic.add') }}">添加新话题</a>
     {% if user.role == 1 %}
-        <a href="{{ url_for('board.add') }}">添加新版块</a>
+        <a href="{{ url_for('board.manage') }}">管理新版块</a>
     {% endif %}
 {% endblock %}

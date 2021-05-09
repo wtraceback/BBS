@@ -1,0 +1,32 @@
+{% extends "bbs_base.html" %}
+
+{% block title %}
+    管理板块
+{% endblock %}
+
+{% block page_content %}
+    <h1>管理板块</h1>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>板块名字</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for b in boards %}
+                <tr>
+                    <td>
+                        {{ b.name }}
+                    </td>
+                    <td>
+                        <form action="{{ url_for('board.delete', id=b.id) }}" method="post">
+                            <input type="submit" class="btn btn-danger btn-sm" onclick="return confirm('确定要删除该板块？')" value="删除">
+                        </form>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
