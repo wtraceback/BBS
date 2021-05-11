@@ -4,7 +4,7 @@
 Topic
 {% endblock %}
 
-{% block page_content %}
+{% block main_content %}
     <ul class="nav nav-pills">
         <li class="nav-item">
             <a class="nav-link {% if request.args.get('board_id', '') == '' %}active{% endif %}" href="{{ url_for('topic.index') }}">全部</a>
@@ -27,9 +27,4 @@ Topic
             {% endfor %}
         </ui>
     </div>
-
-    <a href="{{ url_for('topic.add') }}">添加新话题</a>
-    {% if user.role == 1 %}
-        <a href="{{ url_for('board.manage') }}">管理新版块</a>
-    {% endif %}
 {% endblock %}
