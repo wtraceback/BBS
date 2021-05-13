@@ -42,4 +42,6 @@ def add():
 @topic.route('/<int:id>')
 def detail(id):
     t = Topic.get(id)
-    return render_template('topic/detail.html', topic=t)
+    user = current_user()
+
+    return render_template('topic/detail.html', topic=t, user=user)

@@ -20,3 +20,13 @@ class Topic(Model):
         from models.reply import Reply
         rs = Reply.find_all(topic_id=self.id)
         return rs
+
+    def board(self):
+        from models.board import Board
+        bs = Board.find_by(id=self.board_id)
+        return bs
+
+    def user(self):
+        from models.user import User
+        us = User.find_by(id=self.user_id)
+        return us
