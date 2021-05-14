@@ -25,36 +25,69 @@
         </div>
     </div>
 
-    <div class="topic-panel border-light my-3">
-        <div class="header">
-            <span>
-                {{ topic.replies()|count }} 回复
-            </span>
-        </div>
-
-        {% for r in topic.replies() %}
-            <div class="comment-item">
-                <p class="comment-item-text">
-                    {{ r.user().username }} @ {{ r.content }}
-                </p>
+    {% if topic.replies() != [] %}
+        <div class="topic-panel border-light my-3">
+            <div class="header">
+                <span>
+                    {{ topic.replies()|count }} 回复
+                </span>
             </div>
-        {% endfor %}
+
+            {% for r in topic.replies() %}
+                <div class="comment-item">
+                    <p class="comment-item-text">
+                        {{ r.user().username }} @ {{ r.content }}
+                    </p>
+                </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    {% if user != None %}
+        <div>
+            <form class="form-horizontal" method="post" action="{{ url_for('reply.add') }}">
+                <input type="hidden" name="topic_id" value="{{ topic.id }}">
+
+                <div class="control-group">
+                    <label class="control-label">评论</label>
+                    <div class="controls">
+                        <textarea name="content" cols="30" rows="10"></textarea>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <input type="submit" class="span-primary" value="添加评论">
+                </div>
+            </form>
+        </div>
+    {% endif%}
+{% endblock %}
+
+
+{% block sidebar %}
+    <div class="card border-light mb-3" style="max-width: 20rem;">
+        <div class="card-header">作者</div>
+        <div class="card-body">
+            <a class="user_avatar" href="#">
+                <img src="" alt="{{ topic.user().username }}">
+            </a>
+            <span class="user_name">
+                <a class="dark" href="#">{{ topic.user().username }}</a>
+            </span>
+            <div>
+                <span class="signature">
+                    用户签名
+                </span>
+            </div>
+        </div>
     </div>
 
-    <div>
-        <form class="form-horizontal" method="post" action="{{ url_for('reply.add') }}">
-            <input type="hidden" name="topic_id" value="{{ topic.id }}">
-
-            <div class="control-group">
-                <label class="control-label">评论</label>
-                <div class="controls">
-                    <textarea name="content" cols="30" rows="10"></textarea>
-                </div>
-            </div>
-
-            <div class="form-actions">
-                <input type="submit" class="span-primary" value="添加评论">
-            </div>
-        </form>
+    <div class="card border-light mb-3" style="max-width: 20rem;">
+        <div class="card-header">作者其他话题</div>
+        <div class="card-body">
+            <p class="card-text">
+                <a href=""></a>
+            </p>
+        </div>
     </div>
 {% endblock %}

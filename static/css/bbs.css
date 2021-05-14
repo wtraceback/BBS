@@ -16,15 +16,15 @@ body {
     border-radius: .25rem;
 }
 
-.topic-panel .header {
+.header {
     padding: .5rem 1rem;
     margin-bottom: 0;
-    background-color: rgba(248,245,240,.25);
+    background-color: #F6F6F6;
     border-bottom: 1px solid rgba(223,215,202,.75);
 }
 
 .topic_header {
-    background-color: #fff;
+    background-color: #FFF;
 }
 
 .topic_full_title {
@@ -61,4 +61,12 @@ body {
 
 .comment-item:not(:nth-child(2)) {
     border-top: 1px solid #f0f0f0
+}
+
+.user_name {
+    max-width: 120px;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
 }
