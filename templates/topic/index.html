@@ -5,24 +5,18 @@ Topic
 {% endblock %}
 
 {% block main_content %}
-    <ul class="nav nav-pills">
-        <li class="nav-item">
-            <a class="nav-link {% if request.args.get('board_id', '') == '' %}active{% endif %}" href="{{ url_for('topic.index') }}">全部</a>
-        </li>
-        {% for b in boards %}
-            <li class="nav-item">
-                <a class="nav-link {% if request.args.get('board_id', '') == b.str_id() %}active{% endif %}" href="{{ url_for('topic.index', board_id=b.id) }}">{{ b.name }}</a>
-            </li>
-        {% endfor %}
-    </ul>
-
-    <hr class="my-3">
-
     <div class="panel">
-        <ui class="list-group">
+        <div class="topic-nav px-2 py-2">
+                <a class="topic-tab {% if request.args.get('board_id', '') == '' %}current-tab{% endif %}" href="{{ url_for('topic.index') }}">全部</a>
+            {% for b in boards %}
+                    <a class="topic-tab {% if request.args.get('board_id', '') == b.str_id() %}current-tab{% endif %}" href="{{ url_for('topic.index', board_id=b.id) }}">{{ b.name }}</a>
+            {% endfor %}
+        </div>
+
+        <ui class="topic_list list-group">
             {% for t in topics %}
             <li class="list-group-item">
-                <a href="{{ url_for('topic.detail', id=t.id) }}">{{ t.title }}</a>
+                <a class="dark topic_title" href="{{ url_for('topic.detail', id=t.id) }}">{{ t.title }}</a>
             </li>
             {% endfor %}
         </ui>

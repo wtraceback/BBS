@@ -1,5 +1,6 @@
 body {
     background-color: #E1E1E1;
+    font-family: "Helvetica Neue","Luxi Sans","DejaVu Sans",Tahoma,"Hiragino Sans GB",STHeiti,sans-serif!important;
 }
 
 .topic-panel {
@@ -69,4 +70,53 @@ body {
     display: inline-block;
     vertical-align: middle;
     font-size: 16px;
+}
+
+.container a {
+    text-decoration: none;
+}
+
+a.dark {
+    color: #778087;
+}
+
+a.topic_title {
+    max-width: 100%;
+    -o-text-overflow: ellipsis;
+    white-space: nowrap;
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 16px;
+    line-height: 30px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+.panel .topic-nav {
+    background-color: #F6F6F6;
+}
+
+.topic-tab {
+    margin: 0 10px;
+    color: #80bd01;
+    font-size: 14px;
+}
+
+.current-tab {
+    color: #fff;
+    background-color: #80bd01 !important;
+}
+
+.topic-tab.current-tab {
+    background-color: #80bd01;
+    color: #fff;
+    padding: 3px 4px;
+    border-radius: 3px;
+}
+
+.topic_list .list-group-item {
+    border: none;
+    border-bottom: 1px solid #dfd7ca;
+    border-top-left-radius: initial;
+    border-top-right-radius: initial;
 }
