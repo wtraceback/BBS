@@ -16,6 +16,17 @@ Topic
         <ui class="topic_list list-group">
             {% for t in topics %}
             <li class="list-group-item">
+                <span class="reply_count pull-left">
+                    <span class="count_of_replies" title="回复数">
+                        {{ t.replies()|count }}
+                    </span>
+                    <span class="count_seperator">/</span>
+                    <span class="count_of_visits" title="点击数">
+                        {{ t.views }}
+                    </span>
+                </span>
+
+                <span class="topiclist-tab">{{ t.board().name }}</span>
                 <a class="dark topic_title" href="{{ url_for('topic.detail', id=t.id) }}">{{ t.title }}</a>
             </li>
             {% endfor %}
@@ -25,5 +36,6 @@ Topic
     <a href="{{ url_for('topic.add') }}">添加新的话题</a>
     {% if user.role == 1 %}
     <a href="{{ url_for('board.add') }}">添加新的板块</a>
+    <a href="{{ url_for('board.manage') }}">管理板块</a>
     {% endif %}
 {% endblock %}

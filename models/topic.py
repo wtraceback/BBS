@@ -15,6 +15,7 @@ class Topic(Model):
         self.ut = self.ct
         self.user_id = form.get('user_id', '')
         self.board_id = int(form.get('board_id', -1))
+        self.views = 0
 
     def replies(self):
         from models.reply import Reply
@@ -30,3 +31,10 @@ class Topic(Model):
         from models.user import User
         us = User.find_by(id=self.user_id)
         return us
+
+    @classmethod
+    def get(cls, id):
+        m = cls.find_by(id=id)
+        m.views += 1
+        m.save()
+        return m

@@ -120,3 +120,38 @@ a.topic_title {
     border-top-left-radius: initial;
     border-top-right-radius: initial;
 }
+
+.list-group-item {
+    font-size: 14px;
+}
+
+.list-group-item .reply_count {
+    width: 70px;
+    display: inline-block;
+    text-align: center;
+}
+
+.list-group-item .count_of_replies {
+    color: #9e78c0;
+}
+
+.list-group-item .count_seperator {
+    margin: 0 -3px;
+    font-size: 10px;
+}
+
+.list-group-item .count_of_visits {
+    font-size: 10px;
+    color: #b4b4b4;
+}
+
+.topiclist-tab {
+    background-color: #e5e5e5;
+    color: #999;
+    padding: 2px 4px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -o-border-radius: 3px;
+    font-size: 12px;
+}
