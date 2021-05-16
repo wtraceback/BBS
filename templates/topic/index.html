@@ -37,5 +37,6 @@ Topic
     {% if user.role == 1 %}
     <a href="{{ url_for('board.add') }}">添加新的板块</a>
     <a href="{{ url_for('board.manage') }}">管理板块</a>
+    <a href="{{ url_for('admin.settings') }}">管理网站简介</a>
     {% endif %}
 {% endblock %}

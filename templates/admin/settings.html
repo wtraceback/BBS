@@ -1,0 +1,33 @@
+{% extends "bbs_base.html" %}
+
+{% block title %}
+网站简介的设置
+{% endblock %}
+
+{% block main_content %}
+    <div class="topic-panel">
+        <div class="header">
+            <ol class="breadcrumb bbs_about px-0">
+                <li class="breadcrumb-item"><a href="{{ url_for('topic.index') }}">主页</a></li>
+                <li class="breadcrumb-item active">设置</li>
+            </ol>
+        </div>
+
+        <div class="topic_content">
+            <div class="markdown-text">
+                <form class="form-horizontal" method="post" action="{{ url_for('admin.settings') }}">
+                    <div class="control-group">
+                        <label class="control-label">关于</label>
+                        <div class="controls">
+                            <textarea name="content" cols="30" rows="2"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <input type="submit" class="span-primary" value="提交">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

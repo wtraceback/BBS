@@ -18,6 +18,8 @@ from routes.reply import reply as reply_bp
 app.register_blueprint(reply_bp, url_prefix='/reply')
 from routes.board import board as board_bp
 app.register_blueprint(board_bp, url_prefix='/board')
+from routes.admin import admin as admin_bp
+app.register_blueprint(admin_bp, url_prefix='/admin')
 
 
 if __name__ == '__main__':

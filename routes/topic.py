@@ -8,6 +8,7 @@ from flask import (
 from routes import current_user
 from models.topic import Topic
 from models.board import Board
+from models.about import About
 
 
 topic = Blueprint('topic', __name__)
@@ -45,3 +46,9 @@ def detail(id):
     user = current_user()
 
     return render_template('topic/detail.html', topic=t, user=user)
+
+
+@topic.route('/about')
+def about():
+    a = About.get(1)
+    return render_template('topic/about.html', about=a)
