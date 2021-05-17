@@ -161,3 +161,13 @@ a.topic_title {
     background-color: #F6F6F6;
     margin: 0;
 }
+
+.pull-left {
+    float: left;
+}
+
+.user_avatar img {
+    width: 30px;
+    height: 30px;
+    border-radius: 3px;
+}

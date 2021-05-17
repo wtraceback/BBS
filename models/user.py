@@ -10,6 +10,7 @@ class User(Model):
         self.username = form.get('username', '')
         self.password = form.get('password', '')
         self.role = 11
+        self.user_avatar = 'default.png'
 
     def hashed_salt_password(self, password, salt='abc[];,./123'):
         """
