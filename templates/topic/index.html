@@ -38,6 +38,7 @@ Topic
     </div>
 
     <a href="{{ url_for('topic.add') }}">添加新的话题</a>
+    <a href="{{ url_for('message.index') }}">私信</a>
     {% if user.role == 1 %}
     <a href="{{ url_for('board.add') }}">添加新的板块</a>
     <a href="{{ url_for('board.manage') }}">管理板块</a>

@@ -20,6 +20,8 @@ from routes.board import board as board_bp
 app.register_blueprint(board_bp, url_prefix='/board')
 from routes.admin import admin as admin_bp
 app.register_blueprint(admin_bp, url_prefix='/admin')
+from routes.message import message as message_bp
+app.register_blueprint(message_bp, url_prefix='/message')
 
 
 if __name__ == '__main__':

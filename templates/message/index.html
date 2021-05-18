@@ -1,0 +1,25 @@
+{% extends "bbs_base.html" %}
+
+{% block title %}
+私信
+{% endblock %}
+
+{% block main_content %}
+    <div class="topic-panel">
+        <div class="header">
+            <ol class="breadcrumb about px-0">
+                <li class="breadcrumb-item"><a href="{{ url_for('topic.index') }}">主页</a></li>
+                <li class="breadcrumb-item active">私信</li>
+            </ol>
+        </div>
+
+        <div class="topic_content">
+            <div class="markdown-text">
+                <h3>私信</h3>
+                <p>
+
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
