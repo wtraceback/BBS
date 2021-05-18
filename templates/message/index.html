@@ -13,12 +13,54 @@
             </ol>
         </div>
 
-        <div class="topic_content">
-            <div class="markdown-text">
-                <h3>私信</h3>
-                <p>
+        <div class="row justify-content-center">
+            <form class="form col-6" method="post" action="{{ url_for('message.add') }}">
+                <div class="form-group">
+                    <label class="col-form-label mt-4" for="title">标题</label>
+                    <input type="text" class="form-control" placeholder="标题" name="title" id="title">
+                </div>
 
-                </p>
+                <div class="form-group">
+                    <label class="col-form-label mt-4" for="content">内容</label>
+                    <input type="text" class="form-control" placeholder="内容" name="content" id="content">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-form-label mt-4" for="to">接收者</label>
+                    <input type="text" class="form-control" placeholder="接收者 id" name="to" id="to">
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary btn-md" value="发送">
+                </div>
+
+                <div class="form-group">
+                    {{ result }}
+                </div>
+            </form>
+        </div>
+
+        <div class="topic_content">
+            <h3>私信列表</h3>
+            <div>
+                <h4>收到的私信</h4>
+                <ul>
+                    {% for m in sends %}
+                        <li>
+                            {{ m.title }} @ {{ m.content }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <h4>发送的私信</h4>
+                <ul>
+                    {% for m in receives %}
+                        <li>
+                            {{ m.title }} @ {{ m.content }}
+                        </li>
+                    {% endfor %}
+                </ul>
             </div>
         </div>
     </div>
