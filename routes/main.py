@@ -55,5 +55,5 @@ def add_avatar():
 
 
 @main.route('/uploads/<filename>')
-def uploads(filename):
+def uploaded_file(filename):
     return send_from_directory(current_app.config['AVATAR_UPLOAD_PATH'], filename)
