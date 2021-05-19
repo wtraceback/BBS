@@ -43,7 +43,7 @@
         <div class="topic_content">
             <h3>私信列表</h3>
             <div>
-                <h4>收到的私信</h4>
+                <h4>发送的私信</h4>
                 <ul>
                     {% for m in sends %}
                         <li>
@@ -53,11 +53,16 @@
                 </ul>
             </div>
             <div>
-                <h4>发送的私信</h4>
+                <h4>收到的私信</h4>
                 <ul>
                     {% for m in receives %}
                         <li>
-                            {{ m.title }} @ {{ m.content }}
+                            {% if m.read %}
+                                【已读】
+                            {% else %}
+                                【未读】
+                            {% endif %}
+                            <a href="{{ url_for('message.view', id=m.id) }}">{{ m.title }}</a>
                         </li>
                     {% endfor %}
                 </ul>

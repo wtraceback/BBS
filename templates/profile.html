@@ -7,9 +7,14 @@
 {% block content %}
     <div class="row justify-content-center">
         <h1>用户资料页面</h1>
-          <div class="user_avatar">
-              <img src="{{ url_for('main.uploaded_file', filename=user.user_avatar) }}" alt="{{ user.username }}">
-          </div>
+        <div class="user_avatar">
+            <img src="{{ url_for('main.uploaded_file', filename=user.user_avatar) }}" alt="{{ user.username }}">
+        </div>
+        <div>
+            <p>
+                用户名：<span>{{ user.username }}</span>
+            </p>
+        </div>
 
 
         <h2>上传头像</h2>

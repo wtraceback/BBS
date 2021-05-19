@@ -25,3 +25,8 @@ class Message(Model):
     def mark_read(self):
         self.read = True
         self.save()
+
+    def user(self):
+        from models.user import User
+        u = User.get(self.sender_id)
+        return u
