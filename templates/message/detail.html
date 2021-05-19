@@ -22,7 +22,7 @@
                 </h5>
 
                 <p>
-                    发送者：{{ message.user().username }}
+                    发送者：<a href="{{ url_for('main.profile', username=message.user().username) }}">{{ message.user().username }}</a>
                 </p>
 
                 <p>

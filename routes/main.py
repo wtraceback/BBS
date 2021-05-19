@@ -12,6 +12,7 @@ import os
 
 from routes import current_user
 from utils import allowed_file
+from models.user import User
 
 
 main = Blueprint('main', __name__)
@@ -22,9 +23,9 @@ def index():
     return render_template('index.html')
 
 
-@main.route('/profile')
-def profile():
-    u = current_user()
+@main.route('/profile/<username>')
+def profile(username):
+    u = User.find_by(username=username)
     if u is None:
         return redirect(url_for('topic.index'))
 

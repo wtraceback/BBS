@@ -24,6 +24,16 @@ from routes.message import message as message_bp
 app.register_blueprint(message_bp, url_prefix='/message')
 
 
+@app.context_processor
+def make_template_context():
+    from flask import session
+    from models.user import User
+    uid = session.get('user_id', '')
+    u = User.find_by(id=uid)
+
+    return dict(current_user=u)
+
+
 if __name__ == '__main__':
     config = dict(
         debug=True,
