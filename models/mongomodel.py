@@ -93,7 +93,7 @@ class MongoBase(object):
         :return: 返回删除的元素或 None
         """
         classname = cls.__name__
-        r = client.db[classname].delete_one(id=id)
+        r = client.db[classname].delete_one({"id":id})
         if r.deleted_count == 0:
             return None
         else:
